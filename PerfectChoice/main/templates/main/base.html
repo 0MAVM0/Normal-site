@@ -8,23 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block link %}
     {% endblock link %}
-    <title>{% block content %}{% endblock content %}</title>
+    <title>{% block title %}{% endblock title %}</title>
 
     {% bootstrap_css %}
 </head>
 <body>
     {% if user.is_authenticated %}
-        {% comment %} {% include 'navbar.html' %} {% endcomment %}
+        {% comment %} {% include 'main/navbar.html' %} {% endcomment %}
 
         {% block content %}
         {% endblock content %}
 
-        {% comment %} {% include 'footer.html' %} {% endcomment %}
+        {% comment %} {% include 'main/footer.html' %} {% endcomment %}
 
         {% block script %}
         {% endblock script %}
     {% else %}
-        {% include 'allAuth/auth.html' %}
+        {% include 'main/allAuth/auth.html' %}
     {% endif %}
     {% bootstrap_javascript %}
 </body>
