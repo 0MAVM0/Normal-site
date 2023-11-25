@@ -5,10 +5,10 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 class SignUpForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2']
+        fields = ('username', 'password1', 'password2')
 
 
 class SignInForm(AuthenticationForm):
     class Meta:
         model = User
-        fields = ['username', 'password']
+        fields = ('username', 'password')
