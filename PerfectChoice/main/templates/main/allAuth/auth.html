@@ -1,8 +1,8 @@
-{% load static %}
+{% comment %} {% load static %}
 
-<link rel="stylesheet" href="{% static 'styles/allAuth/auth.css' %}">
+<link rel="stylesheet" href="{% static 'styles/allAuth/auth.css' %}"> {% endcomment %}
 
-<section class="forms-section"><br><br><br>
+{% comment %} <section class="forms-section"><br><br><br>
     <h1 class="section-title">Login or Sign up</h1>
     <div class="forms">
         <div class="form-wrapper is-active">
@@ -32,4 +32,16 @@
             }
         })
     })
-</script>
+</script> {% endcomment %}
+
+<form method="post" action="{% url 'register_or_login' %}">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <button type="submit" name="register">Register</button>
+
+    <hr>
+
+    {{ form.as_p }}
+    <button type="submit" name="login">Login</button>
+</form>
