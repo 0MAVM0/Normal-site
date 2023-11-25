@@ -1,9 +1,8 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'js/auth.js' %}">
 <link rel="stylesheet" href="{% static 'styles/allAuth/auth.css' %}">
 
-<section class="forms-section">
+<section class="forms-section"><br><br><br>
     <h1 class="section-title">Login or Sign up</h1>
     <div class="forms">
         <div class="form-wrapper is-active">
@@ -22,3 +21,15 @@
         </div>
     </div>
 </section>
+<script>
+    const switchers = [...document.querySelectorAll('.switcher')]
+    
+    switchers.forEach(item => {
+        item.addEventListener('click', function() {
+            if (this.parentElement) {
+                switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+                this.parentElement.classList.add('is-active')
+            }
+        })
+    })
+</script>
