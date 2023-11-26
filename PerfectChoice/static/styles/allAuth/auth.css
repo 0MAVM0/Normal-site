@@ -56,7 +56,7 @@ body {
 	height: 100vh;
 	width: 100%;
 	background-color: var(--black);
-	background-image: url("https://cdn.mos.cms.futurecdn.net/HuGGeENt6kGyixe3hT9tnY-1920-80.jpg.webp");
+	background-image: url("../../images/space.jpg");
 	display: grid;
 	place-items: center;
 	overflow: hidden;
@@ -73,7 +73,7 @@ body {
 	width: calc(200 * var(--px));
 	border-radius: 50%;
 	box-shadow: 0px 0px calc(70 * var(--px)) calc(5 * var(--px)) #fff;
-	background-image: url("https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_1k.jpg");
+	background-image: url("../../images/moon.jpg");
 	background-size: calc(430 * var(--px));
 	background-position: left;
 	background-repeat: no-repeat;
