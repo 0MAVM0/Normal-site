@@ -13,8 +13,8 @@
     {% bootstrap_css %}
 </head>
 <body>
-    {% if user.is_authenticated %}
-        {% comment %} {% include 'main/navbar.html' %} {% endcomment %}
+    {% comment %} {% if user.is_authenticated %} {% endcomment %}
+        {% include 'main/navbar.html' %}
 
         {% block content %}
         {% endblock content %}
@@ -23,9 +23,9 @@
 
         {% block script %}
         {% endblock script %}
-    {% else %}
-        {% include 'main/allAuth/auth.html' %}
-    {% endif %}
+    {% comment %} {% else %} {% endcomment %}
+        
+    {% comment %} {% endif %} {% endcomment %}
     {% bootstrap_javascript %}
 </body>
 </html>
