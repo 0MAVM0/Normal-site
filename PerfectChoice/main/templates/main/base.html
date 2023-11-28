@@ -17,18 +17,21 @@
     {% comment %} {% if user.is_authenticated %} {% endcomment %}
 
         <div id="body-pd">
-            <div class="main-div-navbar">
+            <div>
                 {% include 'main/navbar.html' %}
             </div>
 
-            <div class="main-content">
-                {% block content %}
-                {% endblock content %}
+            <div class="main">
+                <div class="main-content">
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+
+                <div class="main-footer">
+                    {% comment %} {% include'main/footer.html' %} {% endcomment %}
+                </div>
             </div>
 
-            <div class="main-footer">
-                {% comment %} {% include'main/footer.html' %} {% endcomment %}
-            </div>
         </div>
 
         {% block script %}
