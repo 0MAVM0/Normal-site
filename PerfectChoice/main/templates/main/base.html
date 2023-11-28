@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
     {% block link %}
     {% endblock link %}
     <title>{% block title %}{% endblock title %}</title>
@@ -14,12 +15,21 @@
 </head>
 <body>
     {% comment %} {% if user.is_authenticated %} {% endcomment %}
-        {% include 'main/navbar.html' %}
 
-        {% block content %}
-        {% endblock content %}
+        <div id="body-pd">
+            <div class="main-div-navbar">
+                {% include 'main/navbar.html' %}
+            </div>
 
-        {% comment %} {% include 'main/footer.html' %} {% endcomment %}
+            <div class="main-content">
+                {% block content %}
+                {% endblock content %}
+            </div>
+
+            <div class="main-footer">
+                {% comment %} {% include'main/footer.html' %} {% endcomment %}
+            </div>
+        </div>
 
         {% block script %}
         {% endblock script %}

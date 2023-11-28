@@ -3,44 +3,39 @@
 <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
 <link rel="stylesheet" href="{% static 'js/navbar.js' %}">
 
-<div id="body-pd">
-    <div class="l-navbar" id="navbar">
-        <nav class="nav">
-            <div>
-                <div class="nav__brand">
-                    <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                    <a href="" class="nav__log">
-                        PerfectChoise
-                    </a>
-                </div>
-
-                <div class="nav__list">
-                    <a class="nav__link" active>
-                        <ion-icon name="home-outline" class="nav_icon"></ion-icon>
-                        <span class="nav_name">Home page</span>
-                    </a>
-                    <a class="nav__link" active>
-                        <ion-icon name="clipboard-outline" class="nav_icon"></ion-icon>
-                        <span class="nav_name">My publications</span>
-                    </a>
-                    <a class="nav__link" active>
-                        <ion-icon name="add-circle-outline" class="nav_icon"></ion-icon>
-                        <span class="nav_name">Create a publication</span>
-                    </a>
-                    <a class="nav__link" active>
-                        <ion-icon name="person-circle-outline" class="nav_icon"></ion-icon>
-                        <span class="nav_name">Profile</span>
-                    </a>
-                </div>
+<div class="l-navbar" id="navbar">
+    <nav class="nav">
+        <div>
+            <div class="nav__brand">
+                <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
+                <a href="" class="nav__logo">PerfectChoise</a>
             </div>
 
-            <a href="" class="nav__link">
-                <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
-                <span class="nav__name">Log Out</span>
-            </a>
-        </nav>
-    </div>
-    <h1>Sidebar Menu</h1>
+            <div class="nav__list">
+                <a class="nav__link" active>
+                    <ion-icon name="home-outline" class="nav_icon"></ion-icon>
+                    <span class="nav_name">Home page</span>
+                </a>
+                <a class="nav__link" active>
+                    <ion-icon name="clipboard-outline" class="nav_icon"></ion-icon>
+                    <span class="nav_name">My publications</span>
+                </a>
+                <a class="nav__link" active>
+                    <ion-icon name="add-circle-outline" class="nav_icon"></ion-icon>
+                    <span class="nav_name">Create</span>
+                </a>
+                <a class="nav__link" active>
+                    <ion-icon name="person-circle-outline" class="nav_icon"></ion-icon>
+                    <span class="nav_name">Profile</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="" class="nav__link">
+            <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+            <span class="nav__name">Log Out</span>
+        </a>
+    </nav>
 </div>
 
 <script defer>
