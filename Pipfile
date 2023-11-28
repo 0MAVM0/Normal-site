@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 django = "*"
-django-bootstrap5 = "*"
 djangorestframework = "*"
 djoser = "*"
 djangorestframework-simplejwt = "*"

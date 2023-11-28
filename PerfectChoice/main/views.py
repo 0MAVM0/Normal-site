@@ -1,28 +1,23 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.shortcuts import render
 
 from .forms import *
+from .models import *
 
 
 def home_page(request):
     return render(request, 'main/home.html')
 
 
-def register_or_login(request):
+def registration(request):
     if request.method == 'POST':
-        if 'register' in request.POST:
-            form = SignUpForm(request.POST)
-            if form.is_valid():
-                user = form.save()
-                login(request, user)
-                return redirect('')
-        elif 'login' in request.POST:
-            form = SignInForm(data=request.POST)
-            if form.is_valid():
-                user = form.get_user()
-                login(request, user)
-                return redirect('')
-    else:
-        form = SignUpForm()
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            context = {'user': request.user}
+            return render(request, 'main/home.html', context)
+        else:
+            context = {'form': form}
+            return render(request, 'main/allAuth/registrator.html', context)
 
-    return render(request, 'main/allAuth/auth.html')
+    context = {'form': UserForm()}
+    return render(request, 'main/allAuth/registrator.html', context)

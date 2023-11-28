@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Libraries
-    'django_bootstrap5',
     #           DRF
     'djoser',
     'rest_framework',

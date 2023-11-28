@@ -1,11 +1,14 @@
-from django.urls import path
-from django.contrib.auth.views import LogoutView
+from django.urls import path, include
+from django.contrib.auth.views import LoginView, LogoutView
 
 from .views import *
 
 
 urlpatterns = [
     path('', home_page, name='home_page'),
-    path('register-or-login/', register_or_login, name='register_or_login'),
+    path('registrate/', registration, name="signup"),
+    path('login/', LoginView.as_view(template_name="main/allAuth/login.html"), name="login"),
     path('logout/', LogoutView.as_view(template_name='main/allAuth/logout.html'), name='logout'),
+    path('accounts/', include('allauth.urls')),
+    path('accounts/google/login/', include('allauth.urls'), name='google_login'),
 ]

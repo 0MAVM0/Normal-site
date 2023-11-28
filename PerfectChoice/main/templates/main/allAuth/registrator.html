@@ -1,0 +1,28 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/allAuth/log_reg.css' %}">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<div class="body">
+    
+</div>
+
+<script>
+    function lines() {
+        let sizeW = Math.random() * 22;
+        let duration = Math.random() * 3;
+        let e = document.createElement("div");
+        e.setAttribute("class", "circle");
+        document.body.appendChild(e);
+        e.style.width = 12 + sizeW + "px";
+        e.style.left = Math.random() * +innerWidth + "px";
+        e.style.animationDuration = 2 + duration + "s";
+
+        setTimeout(function () {
+            document.body.removeChild(e);
+        }, 5000);
+    }
+    setInterval(function () {
+        lines();
+    }, 200);      
+</script>

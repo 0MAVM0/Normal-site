@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.body {
+  height: 100vh;
+  background: #001219;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  aspect-ratio: 1/1;
+  background: #fca311;
+  box-shadow: 0 0 10px #ff5400, 0 0 20px #ff5400, 0 0 30px #ff5400,
+    0 0 50px #ff5400;
+  border-radius: 50%;
+  animation: animate 5s linear forwards;
+}
+
+@keyframes animate {
+  0% {
+    transform: translatey(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translatey(-100vh);
+    opacity: 1;
+  }
+}
+
+.circle::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 25%;
+  width: 50%;
+  height: 100vh;
+  opacity: 0.5s;
+  background: linear-gradient(#ff5400, transparent);
+}
+
+.form {
+  max-width: 430px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 6px;
+  background-color: #FFF;
+}
+
+header {
+  font-size: 28px;
+  font-weight: 600;
+  color: #232836;
+  text-align: center;
+}
+
+form {
+  margin-top: 30px;
+}
+
+/*  */
+/*  */
+/*  */
+form > .field {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 6px;
+}
+
+.field input {
+  outline: none;
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0 15px;
+  border: 1px solid #CACACA;
+}
+
+.field input:focus {
+  border-bottom-width: 5px;
+}
+
+.field button {
+  color: #FFF;
+  background-color: #0171d3;
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.field button:hover {
+  background-color: #016dcb;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #8b8b8b;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.form-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.form-link > span,
+.form-link > a {
+  font-size: 14px;
+  font-weight: 400;
+  color: #232836;
+}
+
+.form a {
+  color: #0171d3;
+  text-decoration: none;
+}
+
+.form-content a:hover {
+  text-decoration: underline;
+}
+
+.line {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  margin: 36px 0;
+  background-color: #d4d4d4;
+}
+
+.line::before {
+  content: "Or";
+  width: 50px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFF;
+  color: #232836;
+}
+
+.media-option > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  border-radius: 6px;
+}
+
+a.google {
+  color: #FFF;
+  background-color: #4267b2;
+}
+
+a.google-icon {
+  height: 28px;
+  width: 28px;
+  color: #0171d3;
+  font-size: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF;
+}

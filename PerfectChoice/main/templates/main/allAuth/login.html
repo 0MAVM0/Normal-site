@@ -1,0 +1,69 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/allAuth/log_reg.css' %}">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<div class="body">
+    <div class="form login">
+        <div class="form-content">
+            <header>Login</header>
+
+            <form action="#">
+                <div class="field input-field">
+                    <input type="email" placeholder="Email address" class="input">
+                </div>
+
+                <div class="field input-field">
+                    <input type="password" placeholder="Password" class="password">
+                    <i class='bx bx-hide eye-icon'></i>
+                </div>
+
+                <div class="form-link">
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+
+                <div class="field button-field">
+                    <button>Login</button>
+                </div>
+
+            </form>
+
+            <div class="form-link">
+                <span>
+                    Already have an account?
+                    <a href="{% url 'signup' %}" class="signup-link">Sign up</a>
+                </span>
+            </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="media-option">
+            <a href="{% url 'google_login' %}" class="field google">
+                <i class='bx bxl-google google-icon'></i>
+                <span>Login with Google</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function lines() {
+        let sizeW = Math.random() * 22;
+        let duration = Math.random() * 3;
+        let e = document.createElement("div");
+        e.setAttribute("class", "circle");
+        document.body.appendChild(e);
+        e.style.width = 12 + sizeW + "px";
+        e.style.left = Math.random() * +innerWidth + "px";
+        e.style.animationDuration = 2 + duration + "s";
+
+        setTimeout(function () {
+            document.body.removeChild(e);
+        }, 5000);
+    }
+    setInterval(function () {
+        lines();
+    }, 200);      
+</script>
