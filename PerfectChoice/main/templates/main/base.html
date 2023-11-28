@@ -14,7 +14,7 @@
     {% bootstrap_css %}
 </head>
 <body>
-    {% comment %} {% if user.is_authenticated %} {% endcomment %}
+    {% if user.is_authenticated %}
 
         <div id="body-pd">
             <div>
@@ -36,9 +36,9 @@
 
         {% block script %}
         {% endblock script %}
-    {% comment %} {% else %} {% endcomment %}
-        
-    {% comment %} {% endif %} {% endcomment %}
+    {% else %}
+        {% include 'main/allAuth/auth.html' %}
+    {% endif %}
     {% bootstrap_javascript %}
 </body>
 </html>
