@@ -3,8 +3,51 @@
 <link rel="stylesheet" href="{% static 'styles/allAuth/log_reg.css' %}">
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+<title>Sign up</title>
+
 <div class="body">
-    
+    <div class="form login">
+        <div class="form-content">
+            <header>Sign up</header>
+
+            <form action="#">
+                <div class="field input-field">
+                    <input type="email" placeholder="Email address" class="input">
+                </div>
+
+                <div class="field input-field">
+                    <input type="password" placeholder="Password" class="password">
+                    <i class='bx bx-hide eye-icon'></i>
+                </div>
+
+                <div class="form-link">
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+
+                <div class="field button-field">
+                    <button>Sign up</button>
+                </div>
+
+            </form>
+
+            <div class="form-link">
+                <span>
+                    Don't have an account?
+                    <a href="{% url 'signup' %}" class="signup-link">Log in</a>
+                </span>
+            </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="media-option">
+            <a href="{% url 'google_login' %}" class="field google">
+                <img src="{% static 'images/google.png' %}" class="google-img">
+                <span>Sign up with Google</span>
+            </a>
+        </div>
+
+    </div>
 </div>
 
 <script>

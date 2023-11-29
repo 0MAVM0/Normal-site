@@ -3,6 +3,8 @@
 <link rel="stylesheet" href="{% static 'styles/allAuth/log_reg.css' %}">
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+<title>Log in</title>
+
 <div class="body">
     <div class="form login">
         <div class="form-content">
@@ -40,7 +42,7 @@
 
         <div class="media-option">
             <a href="{% url 'google_login' %}" class="field google">
-                <i class='bx bxl-google google-icon'></i>
+                <img src="{% static 'images/google.png' %}" class="google-img">
                 <span>Login with Google</span>
             </a>
         </div>
