@@ -10,7 +10,9 @@
         <div class="form-content">
             <header>Sign up</header>
 
-            <form action="#">
+            <form>
+                {% csrf_token %}
+
                 <div class="field input-field">
                     <input type="text" placeholder="User name" class="input">
                 </div>
@@ -25,7 +27,7 @@
                 </div>
 
                 <div class="field button-field">
-                    <button>Sign up</button>
+                    <button type="submit">Sign up</button>
                 </div>
 
             </form>
