@@ -179,8 +179,8 @@ img.google-img {
   width: 30px;
   object-fit: cover;
   position: absolute;
-  top: 555px;
-  left: 600px;
+  top: 75%;
+  left: 40%;
 }
 
 a.google {

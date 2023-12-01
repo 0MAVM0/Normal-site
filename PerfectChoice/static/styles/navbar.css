@@ -47,8 +47,8 @@ a {
     cursor: pointer;
 }
 .nav__logo {
-    position: relative;
-    left: -29px;
+    /* position: relative; */
+    /* left: -17px; */
     color: var(--white-color);
     font-weight: 600;
 }

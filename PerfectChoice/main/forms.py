@@ -5,7 +5,5 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import *
 
 class UserForm(UserCreationForm):
-    email = forms.EmailField(required=True)
-
     model = User
-    fields = ('email', 'password1', 'password2')
+    fields = ('username', 'password1', 'password2')

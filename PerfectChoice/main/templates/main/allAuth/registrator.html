@@ -6,13 +6,13 @@
 <title>Sign up</title>
 
 <div class="body">
-    <div class="form login">
+    <div class="form signup">
         <div class="form-content">
             <header>Sign up</header>
 
             <form action="#">
                 <div class="field input-field">
-                    <input type="email" placeholder="Email address" class="input">
+                    <input type="text" placeholder="User name" class="input">
                 </div>
 
                 <div class="field input-field">
@@ -20,8 +20,8 @@
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
 
-                <div class="form-link">
-                    <a href="#" class="forgot-password">Forgot password?</a>
+                <div class="field input-field">
+                    <input type="password" placeholder="Repeat password" class="password">
                 </div>
 
                 <div class="field button-field">
@@ -33,7 +33,7 @@
             <div class="form-link">
                 <span>
                     Don't have an account?
-                    <a href="{% url 'signup' %}" class="signup-link">Log in</a>
+                    <a href="{% url 'login' %}" class="signup-link">Log in</a>
                 </span>
             </div>
         </div>
@@ -67,5 +67,23 @@
     }
     setInterval(function () {
         lines();
-    }, 200);      
+    }, 200);
+
+    const pwShowHide = document.querySelectorAll(".eye-icon");
+
+    pwShowHide.forEach(eyeIcon => {
+        eyeIcon.addEventListener("click", () => {
+            let pwFields = eyeIcon.parentElement.parentElement.querySelectorAll(".password");
+            
+            pwFields.forEach(password => {
+                if (password.type === "password") {
+                    password.type = "text";
+                    eyeIcon.classList.replace("bx-hide", "bx-show");
+                    return;
+                }
+                password.type = "password";
+                eyeIcon.classList.replace("bx-show", "bx-hide");
+            })
+        })
+    })
 </script>
