@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.contrib.auth import login
+from django.shortcuts import render, redirect
 
 from .forms import *
 from .models import *
@@ -12,12 +13,14 @@ def registration(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            form.save(commit=True)
-            context = {'user': request.user}
-            return render(request, 'main/home.html', context)
-        else:
-            context = {'form': form}
-            return render(request, 'main/allAuth/registrator.html', context)
+            user = form.save(commit=False)
+            user_profile = form.save(commit=False)
+            user_profile.user = user
+            user_profile.save()
+            login(request, user)
+            return redirect('home_page')
+    else:
+        form = UserForm()
 
-    context = {'form': UserForm()}
+    context = {'form': form}
     return render(request, 'main/allAuth/registrator.html', context)

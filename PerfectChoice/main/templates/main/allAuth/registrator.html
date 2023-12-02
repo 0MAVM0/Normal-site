@@ -10,20 +10,20 @@
         <div class="form-content">
             <header>Sign up</header>
 
-            <form method="post">
+            <form method="POST">
                 {% csrf_token %}
 
                 <div class="field input-field">
-                    <input type="text" placeholder="User name" class="input">
+                    {{ form.username }}
                 </div>
 
                 <div class="field input-field">
-                    <input type="password" placeholder="Password" class="password">
+                    {{ form.password1 }}
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
 
                 <div class="field input-field">
-                    <input type="password" placeholder="Repeat password" class="password">
+                    {{ form.password2 }}
                 </div>
 
                 <div class="field button-field">
