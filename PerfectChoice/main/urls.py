@@ -9,6 +9,5 @@ urlpatterns = [
     path('registrate/', registration, name="signup"),
     path('login/', LoginView.as_view(template_name="main/allAuth/login.html"), name="login"),
     path('logout/', LogoutView.as_view(template_name='main/allAuth/logout.html'), name='logout'),
-    path('accounts/', include('allauth.urls')),
-    path('accounts/google/login/', include('allauth.urls'), name='google_login'),
+    path('accounts/', include('allauth.urls'), name='google_login'),
 ]
