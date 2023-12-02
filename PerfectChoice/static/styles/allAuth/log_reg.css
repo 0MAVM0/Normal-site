@@ -183,6 +183,12 @@ img.google-img {
   left: 40%;
 }
 
+img.google-img.reg {
+  position: absolute;
+  top: 77.5%;
+  left: 40%;
+}
+
 a.google {
   border: 1px solid #CACACA;
 }
