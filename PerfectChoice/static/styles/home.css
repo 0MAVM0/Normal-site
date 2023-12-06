@@ -1,0 +1,38 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    max-width: 800px;
+    margin: 20px auto;
+}
+.hero {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    color: #181d26;
+} 
+.featured-products {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.product {
+    width: 48%;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+.product:hover {
+    color: #ccc;
+    transform: scale(1.05);
+    transition: .5s;
+    background-color: #181d26;
+}
+.price {
+    font-weight: bold;
+}

@@ -9,11 +9,9 @@
     {% block link %}
     {% endblock link %}
     <title>{% block title %}{% endblock title %}</title>
-
 </head>
 <body>
     {% if user.is_authenticated %}
-
         <div id="body-pd">
             <div>
                 {% include 'main/navbar.html' %}
@@ -26,16 +24,15 @@
                 </div>
 
                 <div class="main-footer">
-                    {% comment %} {% include'main/footer.html' %} {% endcomment %}
+                    {% include 'main/footer.html' %}
                 </div>
             </div>
-
         </div>
-
-        {% block script %}
-        {% endblock script %}
     {% else %}
         {% include 'main/allAuth/auth.html' %}
     {% endif %}
+
+    {% block script %}
+    {% endblock script %}
 </body>
 </html>
