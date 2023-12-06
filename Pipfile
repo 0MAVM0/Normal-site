@@ -10,6 +10,7 @@ djoser = "*"
 djangorestframework-simplejwt = "*"
 django-allauth = "*"
 pillow = "*"
+django-bootstrap5 = "*"
 
 [dev-packages]
 

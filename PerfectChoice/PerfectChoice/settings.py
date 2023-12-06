@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Libraries
+    'django_bootstrap5'
     #           DRF
     'djoser',
     'rest_framework',
@@ -39,7 +40,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.github',
 
 
     # Applicatios
