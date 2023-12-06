@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # Applicatios
     'main',
+    'Profile',
 ]
 
 SITE_ID = 1
