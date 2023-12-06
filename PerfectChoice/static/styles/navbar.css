@@ -64,6 +64,18 @@ a {
     transition: .3s;
     cursor: pointer;
 }
+.nav__link1 {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: center;
+    column-gap: .75rem;
+    padding: 1rem;
+    color: var(--white-color);
+    border-radius: .5rem;
+    margin-top: 10rem;
+    transition: .3s;
+    cursor: pointer;
+}
 .nav__link:hover {
     background-color: var(--first-color);
 }
