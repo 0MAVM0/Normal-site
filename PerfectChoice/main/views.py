@@ -7,7 +7,13 @@ from Profile.models import UserProfile
 
 
 def home_page(request):
-    return render(request, 'main/home.html')
+    user_status = {
+        'is_active': request.user.is_active,
+        'is_staff': request.user.is_staff,
+        'is_superuser': request.user.is_superuser,
+        'username': request.user.username,
+    }
+    return render(request, 'main/home.html', {'user_status': user_status})
 
 def about(request):
     return render(request, 'main/about.html')

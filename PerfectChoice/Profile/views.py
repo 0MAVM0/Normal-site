@@ -18,11 +18,32 @@ def profile(request):
     else:
         form = UserProfileForm(instance=user_profile)
 
-    return render(request, 'profile/profile.html', {'form': form})
+    user_status = {
+        'is_active': request.user.is_active,
+        'is_staff': request.user.is_staff,
+        'is_superuser': request.user.is_superuser,
+        'username': request.user.username,
+    }
+    context = {
+        'form': form,
+        'user_status': user_status,
+    }
+
+    return render(request, 'profile/profile.html', context)
 
 def news_profile(request):
     profiles = UserProfile.objects.all()
-    return render (request, 'profile/news_profiles.html', {'profiles': profiles})
+    user_status = {
+        'is_active': request.user.is_active,
+        'is_staff': request.user.is_staff,
+        'is_superuser': request.user.is_superuser,
+        'username': request.user.username,
+    }
+    context = {
+        'profiles': profiles,
+        'user_status': user_status,
+    }
+    return render (request, 'profile/news_profiles.html', context)
 
 class ProfileDetailViews(DetailView):
     model = UserProfile
