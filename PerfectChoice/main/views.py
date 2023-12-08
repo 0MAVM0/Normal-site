@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import *
 from .models import *
@@ -32,3 +32,54 @@ def registration(request):
 
     context = {'form': form}
     return render(request, 'main/allAuth/registrator.html', context)
+
+
+
+def product(request):
+    products = Product.objects.all()
+    return render(request, 'main/product.html', {'products': products})
+
+def edit_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.user != product.user:
+        return redirect('product')
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('product')
+    else:
+        form = ProductForm(instance=product)
+
+    return render(request, 'main/edit_product.html', {'form': form, 'product': product})
+
+def view_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, 'main/view_product.html', {'product': product})
+
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.user == product.user:
+        product.delete()
+
+    return redirect('product') 
+
+def create_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.instance.user = request.user
+            form.save()
+            return redirect('product')
+    else:
+        form = ProductForm()
+
+    return render(request, 'main/create_product.html', {'form': form})
+
+def my_products(request):
+    if request.user.is_authenticated:
+        user_products = Product.objects.filter(user=request.user)
+        return render(request, 'main/my_products.html', {'user_products': user_products})
+    else:
+        return render(request, 'main/my_products.html', {'user_products': []})

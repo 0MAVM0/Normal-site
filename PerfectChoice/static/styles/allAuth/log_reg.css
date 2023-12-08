@@ -72,9 +72,6 @@ form {
   margin-top: 30px;
 }
 
-/*  */
-/*  */
-/*  */
 form > .field {
   position: relative;
   height: 50px;
@@ -185,7 +182,7 @@ img.google-img {
 
 img.google-img.reg {
   position: absolute;
-  top: 77.5%;
+  top: 82.5%;
   left: 40%;
 }
 
