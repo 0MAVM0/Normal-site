@@ -14,10 +14,16 @@ def home_page(request):
     }
     profile = UserProfile.objects.all()
     user_profile = UserProfile.objects.get(user=request.user) if request.user.is_authenticated else None
+
+    user_group = None
+    if request.user.groups.exists():
+        user_group = request.user.groups.first().name
+
     context = {
         'user_status': user_status,
         'profiles': profile,
-        'user_profile': user_profile
+        'user_profile': user_profile,
+        'user_group': user_group
     }
 
     return render(request, 'main/home.html', context)
