@@ -34,7 +34,7 @@
 
         <a href="{% url 'profile' %}" class="nav__link1">
             <img src="{% static "images/default.jpg" %}" width="20px" height="20px">
-            <span class="nav__name">Profile</span>
+            <span class="nav__name">{% if user_group %}{{ user_group }}{% else %}Profile{% endif %}</span>
         </a>
         <a href="{% url 'logout' %}" class="nav__link">
             <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>

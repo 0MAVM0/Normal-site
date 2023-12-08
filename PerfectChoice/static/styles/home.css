@@ -76,6 +76,7 @@ body {
     text-align: center;
 } 
 .featured-products {
+    color: #000;
     text-align: center;
     display: flex;
     flex-wrap: wrap;
