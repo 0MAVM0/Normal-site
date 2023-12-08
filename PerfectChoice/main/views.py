@@ -13,11 +13,13 @@ def home_page(request):
         'username': request.user.username,
     }
     profile = UserProfile.objects.all()
-
+    user_profile = UserProfile.objects.get(user=request.user) if request.user.is_authenticated else None
     context = {
         'user_status': user_status,
-        'profiles': profile
+        'profiles': profile,
+        'user_profile': user_profile
     }
+
     return render(request, 'main/home.html', context)
 
 def about(request):

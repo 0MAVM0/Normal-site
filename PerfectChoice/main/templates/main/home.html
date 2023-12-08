@@ -15,13 +15,13 @@
         </section>
         <h2 style="text-align: center; padding: 35px;">Featured Products</h2>
         <section class="featured-products">
-            <div class="product">
+            <div class="product Link">
                 <img src="https://avatars.mds.yandex.net/i?id=3af7adbc8e7182d4f8c20893a03a283d54e3d539-10385249-images-thumbs&n=13" width="100%" height="300px">
                 <hr>
                 <h3>Stylish Watch</h3>
                 <p class="price">$99.99</p>
             </div>
-            <div class="product">
+            <div class="product Link">
                 <img src="https://storage.myseldon.com/news-pict-b7/B7D82BA6B59F70DFD072EDEE5F50EF1C" width="100%" height="300px">
                 <hr>
                 <h3>Smartphone X</h3>
@@ -29,4 +29,10 @@
             </div>
         </section>
     </div>
+    <div class="vopros">
+        <a class="Link" href="#"></a>
+    </div>
+    {% if user_profile %}
+        <p style="text-align: center;">Посешения на сайте: {{ user_profile.visit_count }}</p>
+    {% endif %}
 {% endblock content %}

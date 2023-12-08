@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.views.generic import DetailView, DeleteView
 from django.contrib.auth.decorators import login_required
@@ -14,7 +15,8 @@ def profile(request):
         form = UserProfileForm(request.POST, instance=user_profile)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            messages.success(request, 'Your profile has been updated!')
+            return redirect('profiles')
     else:
         form = UserProfileForm(instance=user_profile)
 
