@@ -12,7 +12,7 @@ def product(request):
         'is_superuser': request.user.is_superuser,
         'username': request.user.username,
     }
-    return render(request, 'product/product.html', {'products': products, 'user_status': user_status})
+    return render(request, 'products/product.html', {'products': products, 'user_status': user_status})
 
 def edit_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -27,11 +27,11 @@ def edit_product(request, product_id):
     else:
         form = ProductForm(instance=product)
 
-    return render(request, 'product/edit_product.html', {'form': form, 'product': product})
+    return render(request, 'products/edit_product.html', {'form': form, 'product': product})
 
 def view_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    return render(request, 'product/view_product.html', {'product': product})
+    return render(request, 'products/view_product.html', {'product': product})
 
 def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -50,11 +50,11 @@ def create_product(request):
     else:
         form = ProductForm()
 
-    return render(request, 'product/create_product.html', {'form': form})
+    return render(request, 'products/create_product.html', {'form': form})
 
 def my_products(request):
     if request.user.is_authenticated:
         user_products = Product.objects.filter(user=request.user)
-        return render(request, 'product/my_products.html', {'user_products': user_products})
+        return render(request, 'products/my_products.html', {'user_products': user_products})
     else:
-        return render(request, 'product/my_products.html', {'user_products': []})
+        return render(request, 'products/my_products.html', {'user_products': []})
