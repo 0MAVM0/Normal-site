@@ -4,13 +4,16 @@
     <div class="profiles-container">
         <h2>Profiles</h2>
         {% for el in profiles %}
-        <div class="profile" style="background-color: {{ el.color }}">
-            <div class="name">{{ el.first_name }}</div>
-            <div class="birth-date">{{ el.birth_date }}</div>
-            <div class="interests">{{ el.interests }}</div>
+            <div class="profile" style="background-color: {{ el.color }}">
+                <div class="name">{{ el.first_name }}</div>
+                <div class="birth-date">{{ el.birth_date }}</div>
+                <div class="interests">{{ el.interests }}</div>
                 <hr>
                 <a href="{% url 'profile_detail' el.id  %}" class="btn btn-warning " >посмотреть</a>
-                <a href="{% url 'delete_detail' el.id  %}" class="btn btn-warning " >удалить</a>
+                {% if user.is_authenticated and user == profile.user or user_status.is_superuser %}
+                    <a href="{% url 'delete_detail' el.id  %}" class="btn btn-warning " >удалить</a>
+                    <a href="{% url 'profiles' %}" class="btn btn-warning " >изменить</a>
+                {% endif %}
             </div>
         {% endfor %}
     </div>
