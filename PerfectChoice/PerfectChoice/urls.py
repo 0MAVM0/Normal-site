@@ -9,6 +9,7 @@ urlpatterns = [
     # Applications
     path('', include('main.urls')),
     path('profile/', include('Profile.urls')),
+    path('product/', include('Products.urls')),
 ]
 
 urlpatterns += static(
