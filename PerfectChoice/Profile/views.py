@@ -16,7 +16,7 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Your profile has been updated!')
-            return redirect('profiles')
+            return redirect('profile')
     else:
         form = UserProfileForm(instance=user_profile)
 
@@ -34,17 +34,25 @@ def profile(request):
     return render(request, 'profile/profile.html', context)
 
 def news_profile(request):
-    profiles = UserProfile.objects.all()
+    try:
+        user_profile = UserProfile.objects.get(user=request.user)
+    except UserProfile.DoesNotExist:
+        user_profile = None
+
+    user_group = None
+    if request.user.groups.exists():
+        user_group = request.user.groups.first().name
+
     user_status = {
-        'is_active': request.user.is_active,
-        'is_staff': request.user.is_staff,
-        'is_superuser': request.user.is_superuser,
         'username': request.user.username,
     }
+
     context = {
-        'profiles': profiles,
+        'user_profile': user_profile,
         'user_status': user_status,
+        'user_group': user_group
     }
+
     return render (request, 'profile/news_profiles.html', context)
 
 class ProfileDetailViews(DetailView):

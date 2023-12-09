@@ -3,7 +3,8 @@
 
 {% block content %}
     <div class="profiles-container">
-        <h2>Profiles</h2>
+        <h2>Confirm Deletion</h2>
+        <p>Are you sure you want to delete the profile for {{ object.first_name }} {{ object.last_name }}?</p>
         <form method="post" >
             {% csrf_token %}
             <button type="submit" class="save-button">Delete</button>

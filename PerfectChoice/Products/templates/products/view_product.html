@@ -2,17 +2,20 @@
 
 
 {% block content %}
-    <div class="product-cards-container">
-        <div class="product-card">
-            <h2>{{ product.name }}</h2>
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" />
-            <p class="description">description: {{ product.description}}</p>
-            <p>reviews: {{ product.reviews }}</p>
-            <a class="btn btn-success "  href="{% url 'view_product' product_id=product.id %}">Посмотреть</a>
-            {% if user.is_authenticated and user == product.user or user_status.is_superuser %}
-                <a class="btn btn-warning"  href="{% url 'edit_product' product_id=product.id %}">Edit</a>
-                <a class="btn btn-warning"  href="{% url 'delete_product' product_id=product.id %}">Delete</a>
-            {% endif %}
+<div class="product-cards-container">
+    <div class="product-card">
+        <h2>{{ product.name }}</h2>
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+        <p class="description">Description: {{ product.description }}</p>
+        <p>Reviews: {{ product.reviews }}</p>
+        <p>Created by: {{ product.created_by.username }}</p>
+        <a class="btn btn-success" href="{% url 'view_product' product_id=product.id %}">View</a>
+        <a class="btn btn-info" href="{% url 'profile_detail' creator_profile.id %}">View Creator's Profile</a>
+
+        {% if user.is_authenticated and user == product.created_by or user_status.is_superuser or user_group == 'Admin' %}
+            <a class="btn btn-warning" href="{% url 'edit_product' product_id=product.id %}">Edit</a>
+            <a class="btn btn-warning" href="{% url 'delete_product' product_id=product.id %}">Delete</a>
+        {% endif %}
         </div>
     </div>
 {% endblock content %}
@@ -23,7 +26,6 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
-    
         }
         img {
             border: solid 3px black;
