@@ -10,7 +10,7 @@ body {
     align-items: center;
     width: 100%;
     height: 520px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80");
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("../images/chan.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -41,6 +41,7 @@ body {
     box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
 }
 .achievements {
+    color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -56,23 +57,24 @@ body {
 .achievements .work i {
     width: fit-content;
     font-size: 50px;
-    color: #333333;
+    color: white;
     border-radius: 50%;
     border: 2px solid #333333;
     padding: 12px;
 }
 .achievements .work .work-heading {
     font-size: 20px;
-    color: #333333;
+    color: white;
     text-transform: uppercase;
     margin: 10px 0;
 }
 .achievements .work .work-text {
     font-size: 15px;
-    color: #585858;
+    color: white;
     margin: 10px 0;
 }
 .about-me {
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,17 +84,29 @@ body {
 .about-me img {
     width: 500px;
     max-width: 100%;
-    height: auto;
+    height: 500px;
     border-radius: 10px;
 }
+.about-me-text {
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+    text-align: left;
+}  
 .about-me-text h2 {
     font-size: 30px;
-    color: #333333;
+    color: white;
     text-transform: uppercase;
     margin: 0;
+    text-align: center;
 }
 .about-me-text p {
     font-size: 15px;
-    color: #585858;
+    color: white;
     margin: 10px 0;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
 }
