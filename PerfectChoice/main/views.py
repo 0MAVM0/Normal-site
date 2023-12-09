@@ -9,7 +9,7 @@ from Profile.models import *
 
 def home_page(request):
     profile = UserProfile.objects.all()
-    user_profile = get_object_or_404(UserProfile, user=request.user) if request.user.is_authenticated else None
+    # user_profile = get_object_or_404(UserProfile, user=request.user) if request.user.is_authenticated else None
     user_group = None
     if request.user.groups.exists():
         user_group = request.user.groups.first().name
@@ -24,14 +24,14 @@ def home_page(request):
     context = {
         'user_status': user_status,
         'profiles': profile,
-        'user_profile': user_profile,
+        # 'user_profile': user_profile,
         'user_group': user_group
     }
 
     return render(request, 'main/home.html', context)
 
 def about(request):
-    user_profile = get_object_or_404(UserProfile, user=request.user) if request.user.is_authenticated else None
+    # user_profile = get_object_or_404(UserProfile, user=request.user) if request.user.is_authenticated else None
 
     user_group = None
     if request.user.groups.exists():
@@ -43,7 +43,7 @@ def about(request):
 
     context = {
         'user_status': user_status,
-        'user_profile': user_profile,
+        # 'user_profile': user_profile,
         'user_group': user_group
     }
     return render(request, 'main/about.html', context)
