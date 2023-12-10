@@ -183,9 +183,9 @@ REST_FRAMEWORK = {
     )
 }
 if DEBUG:
-    REST_FRAMEWORK['DEFAULT_AUTHENTICATION_CLASSES'] += [
+    REST_FRAMEWORK['DEFAULT_AUTHENTICATION_CLASSES'] += (
         'rest_framework.authentication.SessionAuthentication',
-    ]
+    )
 
 
 SIMPLE_JWT = {
@@ -227,3 +227,10 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.example.com'  # Замените на адрес вашего SMTP-сервера
+EMAIL_PORT = 587  # Обычно используется порт 587 для TLS
+EMAIL_USE_TLS = True  # Использовать ли TLS (может быть также False)
+EMAIL_HOST_USER = 'admin@gmail.com'  # Замените на ваш адрес электронной почты
+EMAIL_HOST_PASSWORD = 'your_email_password'  # Замените на ваш пароль электронной почты

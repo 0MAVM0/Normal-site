@@ -20,15 +20,8 @@ def profile(request):
     else:
         form = UserProfileForm(instance=user_profile)
 
-    user_status = {
-        'is_active': request.user.is_active,
-        'is_staff': request.user.is_staff,
-        'is_superuser': request.user.is_superuser,
-        'username': request.user.username,
-    }
     context = {
         'form': form,
-        'user_status': user_status,
     }
 
     return render(request, 'profile/profile.html', context)
