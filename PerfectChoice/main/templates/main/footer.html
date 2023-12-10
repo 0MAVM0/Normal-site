@@ -2,33 +2,20 @@
 
 <link rel="stylesheet" href="{% static 'styles/footer.css' %}">
 
-<footer>
-    <div class="footer-container">
-        <div class="footer-section">
-            <h3>Explore</h3>
-            <ul>
-                <li><a href="{% url 'home_page' %}">Home</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="{% url 'about' %}">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+<footer class="footer">
+    <div class="bottom-links">
+        <div class="links">
+            <span>More Info</span>
+            <a href="{% url 'home_page' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="#">Contact</a>
         </div>
-        <div class="footer-section">
-            <h3>Categories</h3>
-            <ul>
-                <li><a href="#">Fashion</a></li>
-                <li><a href="#">Electronics</a></li>
-                <li><a href="#">Home & Living</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h3>Follow Us</h3>
-            <div class="footer-social">
-                <a href="#" target="_blank">Facebook</a>
-                <a href="#" target="_blank">Twitter</a>
-                <a href="#" target="_blank">Instagram</a>
-            </div>
+        <div class="copy">&copy; 2023 Developer</div>
+        <div class="links">
+            <span>Social Links</span>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
-    <p class="footer-disclaimer">PerfectChoice 2023 ©. All rights reserved.</p>
 </footer>
