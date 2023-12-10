@@ -21,6 +21,7 @@ urlpatterns = [
     # DRF
     path('api/', include(router.urls)),
     path('api-rest/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/product/', include('Product.api_urls')),
 ]
 
 urlpatterns += static(
