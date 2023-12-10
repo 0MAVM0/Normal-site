@@ -51,12 +51,21 @@ def product(request):
         'username': request.user.username,
     }
 
+    sort_order = request.GET.get('sort_order', 'ascending')
+
+    if sort_order == 'ascending':
+        products = Product.objects.all().order_by('price')
+    elif sort_order == 'descending':
+        products = Product.objects.all().order_by('-price')
+    else:
+        products = Product.objects.all()
+
     context = {
         'products': products,
         'user_status': user_status,
-        'user_group': user_group
+        'user_group': user_group,
+        'products': products
     }
-
     return render(request, 'products/product.html', context)
 
 def edit_product(request, product_id):
