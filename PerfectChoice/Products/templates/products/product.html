@@ -29,7 +29,7 @@
                         {% if not user == product.user %}
                             <a class="btn btn-success" href="{% url 'add_to_wishlist' product_id=product.id %}">Buy</a>
                         {% endif %}
-                        <a class="btn btn-success" href="{% url 'view_product' product_id=product.id %}">Посмотреть</a>
+                        <a class="btn btn-success" href="{% url 'view_product' product_id=product.id %}">View</a>
                         <br>
                         <br>
                         {% if user.is_authenticated and user == product.user or user_status.is_superuser or user_group == 'Admin' %}
@@ -69,6 +69,10 @@
             width: 80%;
             margin-left: 8%;
             margin-top: 4%;
+        }
+        .card {
+            text-align: center;
+            border: 1px solid white;
         }
     </style>
 {% endblock style %}

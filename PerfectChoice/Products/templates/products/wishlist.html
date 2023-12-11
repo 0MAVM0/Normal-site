@@ -1,100 +1,115 @@
 {% extends 'main/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'styles/wishlist.css' %}">
+{% endblock link %}
 
 {% block title %}Wishlist{% endblock title %}
 
 {% block content %}
-    <h1 class="wishlist-heading">Your Wishlist</h1>
     {% if wishlist_items %}
         {% for item in wishlist_items %}
-            <div class="wishlist-row">
-                <div class="table-cell">{{ item.product.name }}</div>
-                <div class="table-cell">
-                    <img class="product-image" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
-                </div>
-                <div class="table-cell description">{{ item.product.description }}</div>
-                <div class="table-cell quantity-container">
-                    <button class="quantity-btn" onclick="adjustQuantity({{ item.id }}, -1)">-</button>
-                    <p class="quantity" id="quantity-{{ item.id }}">{{ item.quantity }}</p>
-                    <button class="quantity-btn" onclick="adjustQuantity({{ item.id }}, 1)">+</button>
-                </div>
-                <div class="table-cell">
-                    <a class="remove-btn" href="{% url 'remove_from_wishlist' item.id %}">Remove</a>
-                </div>
+            <div class="container">
+                <section id="cart">
+                    <article class="product">
+                        <header>
+                            <a class="remove">
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                <h3 class="remove-link"><a href="#" data-item-id="{{ item.id }}">Remove product</a></h3>
+                            </a>
+                        </header>
+                        <div class="content">
+                            <h1>{{ item.product.name }}</h1>
+                            {{ item.product.description }}
+                        </div>
+                        <footer class="content">
+                            <span class="qt-minus">-</span>
+                            <span class="qt" id="quantity-{{ item.id }}">{{ item.quantity }}</span>
+                            <span class="qt-plus">+</span>
+                            <a class="btn" href="#">Checkout</a>
+                            <h2 class="full-price" id="full-price-{{ item.id }}">
+                                {{ item.product.price|floatformat:item.quantity }} $
+                            </h2>
+                            <h2 class="price">
+                                {{ item.product.price }} $
+                            </h2>
+                        </footer>
+                    </article>
+                </section>
             </div>
         {% endfor %}
-    {% else %}
-        <p style="text-align: center;">No items in your wishlist.</p>
     {% endif %}
 {% endblock content %}
 
 {% block script %}
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        function adjustQuantity(itemId, change) {
-            var quantityElement = document.getElementById('quantity-' + itemId);
-            var currentQuantity = parseInt(quantityElement.innerText);
-            var newQuantity = Math.max(1, currentQuantity + change);
-            quantityElement.innerText = newQuantity;
-            console.log('New Quantity:', newQuantity);
+        var check = false;
+        function changeVal(el) {
+            var qt = parseFloat(el.parent().children(".qt").html());
+            var price = parseFloat(el.parent().children(".price").html());
+            var eq = Math.round(price * qt * 100) / 100;
+            el.parent().children(".full-price").html(eq + " $");
+            changeTotal(); 
         }
+        function changeTotal() {
+            var total = 0;
+            $(".full-price").each(function(index) {
+                total += parseFloat($(".full-price").eq(index).text().replace(" $", ""));
+            });
+            total_foter = Math.round(total * 100) / 100
+            tax_foter = Math.round(total * 0.05)
+            $(".subtotal span").html(Math.round(total_foter + tax_foter + 5));
+            $(".total span").html(Math.round(total * 100) / 100);
+            $(".tax span").html(Math.round(total * 0.05));
+        }
+
+        function adjustQuantity(itemId, change) {
+            var quantityElement = $("#quantity-" + itemId);
+            var currentQuantity = parseInt(quantityElement.text());
+
+            var newQuantity = Math.max(1, currentQuantity + change);
+
+            quantityElement.text(newQuantity);
+
+            changeVal(quantityElement.siblings('.qt-plus'));
+        }
+        $(document).ready(function(){
+            $(".remove-link").click(function(e){
+                e.preventDefault();
+                var itemId = $(this).data("item-id");
+                adjustQuantity(itemId, -1);
+            });
+            $(".qt-plus").click(function(){
+                var quantityElement = $(this).parent().children(".qt");
+                var itemId = quantityElement.attr('id').split('-')[1];
+                adjustQuantity(itemId, 1);
+                var eq = Math.round(parseFloat($(this).parent().children(".price").html()) * parseFloat(quantityElement.html()) * 100) / 100;
+                
+                $(this).parent().children(".full-price").html(eq + " $");
+                
+                $(this).parent().children(".full-price").addClass("added");
+            
+                var el = $(this);
+                window.setTimeout(function(){el.parent().children(".full-price").removeClass("added"); changeTotal();}, 150);
+            });
+
+            $(".qt-minus").click(function () {
+                var quantityElement = $(this).siblings(".qt");
+                var itemId = quantityElement.attr('id').split('-')[1];
+                adjustQuantity(itemId, -1);
+
+                var eq = Math.round(parseFloat($(this).parent().children(".price").html()) * parseFloat(quantityElement.html()) * 100) / 100;
+
+                $(this).parent().children(".full-price").html(eq + " $");
+
+                $(this).parent().children(".full-price").addClass("minused");
+
+                var el = $(this);
+                window.setTimeout(function () { el.parent().children(".full-price").removeClass("minused"); changeTotal(); }, 150);
+            });
+        });
     </script>
 {% endblock script %}
-
-{% block style %}
-    <style>
-        body {
-            margin: 0;
-        }
-        .wishlist-table {
-            display: table;
-            width: 80%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        .wishlist-header,
-        .wishlist-row {
-            display: table-row;
-        }
-        .table-cell {
-            display: table-cell;
-            padding: 10px;
-            box-sizing: border-box;
-            text-align: center;
-        }
-        .wishlist-heading {
-            text-align: center;
-        }
-        .product-image {
-            width: 100%;
-            max-width: 100px;
-            height: auto;
-        }
-        .description {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .quantity-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .quantity-btn {
-            font-size: 1.2em;
-            padding: 5px 10px;
-            margin: 0 5px;
-            cursor: pointer;
-        }
-        .quantity {
-            font-size: 1.2em;
-            margin: 0 10px;
-        }
-        .remove-btn {
-            display: inline-block;
-            padding: 5px 10px;
-            background-color: #dc3545;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-    </style>
-{% endblock style %}
