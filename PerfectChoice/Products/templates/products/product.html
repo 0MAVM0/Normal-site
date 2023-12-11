@@ -13,25 +13,31 @@
             <button type="submit" class="btn btn-outline-primary px-5">Sort</button>
         </form>
     </div>
-    <div class="product-cards-container">
+    <div class="row row-cols-1 row-cols-md-3 g-3" >
         {% for product in products %}
-            <div class="product-card">
-                <h2>{{ product.name }}</h2>
-                {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}" />
-                {% else %}
-                    <p>No image available</p>
-                {% endif %}
-                <p class="description">description: {{ product.description}}</p>
-                <p>reviews: {{ product.reviews }}</p>
-                {% if not user == product.user %}
-                    <a class="btn btn-success" href="{% url 'add_to_wishlist' product_id=product.id %}">Buy</a>
-                {% endif %}
-                <a class="btn btn-success" href="{% url 'view_product' product_id=product.id %}">Посмотреть</a>
-                {% if user.is_authenticated and user == product.user or user_status.is_superuser %}
-                    <a class="btn btn-warning" href="{% url 'edit_product' product_id=product.id %}">Edit</a>
-                    <a class="btn btn-warning" href="{% url 'delete_product' product_id=product.id %}">Delete</a>
-                {% endif %}
+            <div class="col">
+                <div class="card" style="width: 18rem; height: 30rem;">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" />
+                    {% else %}
+                        <a class="btn btn-warning" href="{% url 'delete_product' product_id=product.id %}">Delete</a>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">Description: {{ product.description }}</p>
+                        <p class="card-text">Price: {{ product.price }}$</p>
+                        {% if not user == product.user %}
+                            <a class="btn btn-success" href="{% url 'add_to_wishlist' product_id=product.id %}">Buy</a>
+                        {% endif %}
+                        <a class="btn btn-success" href="{% url 'view_product' product_id=product.id %}">Посмотреть</a>
+                        <br>
+                        <br>
+                        {% if user.is_authenticated and user == product.user or user_status.is_superuser or user_group == 'Admin' %}
+                            <a class="btn btn-warning" href="{% url 'edit_product' product_id=product.id %}">Edit</a>
+                            <a class="btn btn-warning" href="{% url 'delete_product' product_id=product.id %}">Delete</a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         {% endfor %}
     </div>
@@ -59,30 +65,10 @@
         .btn {
             height: 38px;
         }
-        .product-cards-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        img {
-            border: solid 3px black;
-        }
-        .product-card {
-            width: 30%;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            box-sizing: border-box;
-            text-align: center; 
-        }
-        .product-card img {
-            width: 100%;
-            height: auto;
-            border-bottom: 1px solid #ddd;
-        }
-        .description {
-            overflow: hidden;
-            text-overflow: ellipsis;
+        .row {
+            width: 80%;
+            margin-left: 8%;
+            margin-top: 4%;
         }
     </style>
 {% endblock style %}

@@ -34,7 +34,9 @@
             </div>
         </div>
     {% else %}
-        {% include 'main/allAuth/auth.html' %}
+        {% block auth_content %}
+            {% include 'main/allAuth/auth.html' %}
+        {% endblock auth_content %}
     {% endif %}
 
     {% block script %}

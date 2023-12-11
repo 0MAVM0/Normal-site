@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, permissions, status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, action
 from rest_framework.response import Response
 
 from .models import Product
@@ -50,3 +50,9 @@ class ProductViewSet(AuthApiView, viewsets.ModelViewSet):
         elif request.method == 'DELETE':
             product.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
+
+    @action(detail=True, methods=['DELETE'])
+    def destroy_product(self, request, pk=None):
+        product = self.get_object()
+        product.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
