@@ -15,7 +15,7 @@
                 <section id="cart">
                     <article class="product">
                         <header>
-                            <a class="remove">
+                            <a class="remove" href="{% url 'remove_from_wishlist' item.id %}">
                                 <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                                 <h3 class="remove-link"><a href="#" data-item-id="{{ item.id }}">Remove product</a></h3>
                             </a>
@@ -28,7 +28,6 @@
                             <span class="qt-minus">-</span>
                             <span class="qt" id="quantity-{{ item.id }}">{{ item.quantity }}</span>
                             <span class="qt-plus">+</span>
-                            <a class="btn checkout" href="#">Checkout</a>
                             <h2 class="full-price" id="full-price-{{ item.id }}">
                                 {{ item.product.price|floatformat:item.quantity }} $
                             </h2>
