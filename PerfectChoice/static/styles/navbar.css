@@ -46,12 +46,6 @@ a {
     padding: .75rem;
     cursor: pointer;
 }
-.nav__logo {
-    /* position: relative; */
-    /* left: -17px; */
-    color: var(--white-color);
-    font-weight: 600;
-}
 .nav__link {
     display: grid;
     grid-template-columns: max-content max-content;

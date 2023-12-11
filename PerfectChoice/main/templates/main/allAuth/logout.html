@@ -5,8 +5,8 @@
 
 {% block auth_content %}
     <nav class="nav nav-1">
-        <a>
-            <img class="logo" src="{% static 'img/logo.png' %}" />
+        <a href="{% url 'home_page' %}">
+            <img class="logo" src="{% static 'images/logo.png' %}" />
         </a>
         <a href="{% url 'register' %}" class="btn btn-signin">Sign Up</a>
     </nav>
@@ -14,7 +14,7 @@
         <div class="logout-container margin-inline">
             <h1 class="text-black margin-bottom-1">Leaving So Soon</h1>
             <p class="text-black">
-                Just so you know, you don’t always need to sign out of Netflix. It’s only necessary if you’re on a shared or public computer. <br />
+                Just so you know, you don’t always need to sign out of PerefectChoice. It’s only necessary if you’re on a shared or public computer. <br />
                 <br>
             </p>
             <a href="{% url 'login' %}" class="btn btn-gonow margin-top-2 margin-bottom">Go Now</a>
@@ -24,7 +24,7 @@
         <div class="footer-container margin-inline">
             <p>
                 Questions? <br />
-                Call 007-803-321-2130
+                Call (+998) (98)260-87-88
             </p>
             <div class="links">
                 <ul class="">
@@ -37,16 +37,6 @@
                 </ul>
                 <a class="text-terms text-underline" href="">Terms of Use</a>
                 <a class="text-terms text-underline" href="">Privacy</a>
-            </div>
-            <div class="language">
-                <select class="language-select" onchange="location=this.value;">
-                    <option value="" selected>English</option>
-                    <option value="">Bahasa Indonesia</option>
-                </select>
-                <div class="language-icon">
-                    <i class="fas fa-globe globe"></i>
-                    <i class="fas fa-chevron-down chevron"></i>
-                </div>
             </div>
         </div>
     </footer>
