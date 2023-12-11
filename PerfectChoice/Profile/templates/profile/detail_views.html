@@ -19,7 +19,21 @@
                             <h5 class="mt-2 mb-0">{{ profile.first_name }}</h5>
                             <span>{{ profile.birth_date }}</span>
                             <div class="px-4 mt-1">
-                                <p class="fonts">{{ profile.interests }}</p>
+                                {% comment %} <p class="truncate-text"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" data-max-chars="15">{{ profile.interests }}</p> {% endcomment %}
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <p>{{ profile.interests }}</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             {% if user.is_authenticated and user == profile.user %}
                                 <hr>
@@ -40,18 +54,19 @@
 {% block style %}
     <style>
         .card{
-            border:none;
+            width: 250px;
+            border: 1px solid white;
             position:relative;
             overflow:hidden;
             border-radius:8px;
             cursor:pointer;
         }
-        .card:before{
-            content:"";
-            position:absolute;
-            left:0;
-            top:0;
-            width:4px;
+        .card:before{66
+            content:"";67
+            position:absolute;68
+            left: 0;
+            top: 0;
+            width: 8px;
             height:100%;
             background-color:#E1BEE7;
             transform:scaleY(1);
@@ -61,11 +76,12 @@
         .card:after{
             content:"";
             position:absolute;
-            left:0;
-            top:0;
-            width:4px;
+            left: 0;
+            top: 0;
+            width: 8px;
             height:100%;
-            background-color:#8E24AA;
+            background: rgb(174,53,171);
+            background: linear-gradient(0deg, rgba(174,53,171,1) 9%, rgba(162,0,255,1) 20%, rgba(171,0,255,1) 27%, rgba(141,0,255,1) 35%, rgba(85,0,255,1) 44%, rgba(0,26,255,1) 54%, rgba(0,142,255,1) 66%, rgba(0,232,255,1) 75%, rgba(0,95,255,1) 91%);
             transform:scaleY(0);
             transition:all 0.5s;
             transform-origin: bottom
@@ -73,8 +89,16 @@
         .card:hover::after{
             transform:scaleY(1);
         }
-        .fonts{
-            font-size:11px;
+        .text-center {
+            margin-left: 50px;
+        }
+        .truncate-text {
+            margin-left: 125px;
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor:pointer;
         }
         .social-list{
             display:flex;
