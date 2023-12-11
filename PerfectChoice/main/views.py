@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth import login
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import *
@@ -52,10 +53,12 @@ def registration(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
-            messages.success(request, f"Welcome to our site {username}!")
-            form.save()
-            return redirect('login')
+            user = form.save(commit=False)
+            user_profile = form.save(commit=False)
+            user_profile.user = user
+            user_profile.save()
+            login(request, user)
+            return redirect('home_page')
     else:
         form = UserForm()
 
