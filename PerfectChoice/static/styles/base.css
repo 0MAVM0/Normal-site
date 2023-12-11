@@ -4,9 +4,6 @@ body {
 *,::before,::after {
     box-sizing: border-box;
 }
-* {
-    color: white !important;
-}
 #body-pd {
     position: relative;
     margin: 0;
