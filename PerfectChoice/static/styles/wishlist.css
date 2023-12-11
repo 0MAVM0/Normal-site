@@ -31,9 +31,6 @@ a:hover {
     -o-transition: color .2s linear;
     transition: color .2s linear;
 }
-#cart a:hover {
-    color: #000;
-}
 .product.removed {
     margin-left: 980px !important;
     opacity: 0;
@@ -248,4 +245,7 @@ float: right;
 
 .added {
     margin: 0 -50px 0 0 !important;
+}
+.full-price > a {
+    color: #000 !important;
 }

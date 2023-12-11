@@ -168,4 +168,4 @@ def credit_card_page(request):
         'user_group': user_group,
         'Subtotal':Subtotal
     }
-    return render(request, 'product/credit_card.html', context)
+    return render(request, 'products/credit_card.html', context)
