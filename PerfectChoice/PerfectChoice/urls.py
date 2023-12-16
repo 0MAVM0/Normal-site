@@ -17,6 +17,7 @@ urlpatterns = [
     path('', include('main.urls')),
     path('profile/', include('Profile.urls')),
     path('product/', include('Products.urls')),
+    path('games/', include('Games.urls')),
 
     # DRF
     path('api/', include(router.urls)),
