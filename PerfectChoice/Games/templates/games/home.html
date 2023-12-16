@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'styles/games/home.css' %}">
+{% endblock link %}
+
+{% block title %}Games{% endblock title %}
+
+{% block content %}
+    <div id="body">
+        <div class="games">
+            <h1>Games for you!</h1>
+            <p>
+                Why do we need games in an online store?
+                This is so you don't get bored while you wait for your order.
+                Well, so that you stay on our website
+            </p>
+        </div>
+        <div class="game-cards">
+            {% comment %} <img src="{% static 'images/tetris.jpg' %}"> {% endcomment %}
+        </div>
+    </div>
+{% endblock content %}

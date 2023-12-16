@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'main',
     'Profile',
     'Products',
+    'Games',
 ]
 
 SITE_ID = 1
